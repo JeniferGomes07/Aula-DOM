@@ -29,7 +29,7 @@ console.log(document.getElementById("listinha"));
 console.log(document.getElementById("Item01"));*/
 
 //SEGUNDA PARTE DA AULA
-
+/* 
 
 console.log(document.querySelectorAll(".ordenada"));
 console.log(document.querySelector(".ordenada")); 
@@ -62,5 +62,25 @@ titulo.classList.toggle("negrito");
 let paragrafo = document.getElementById("paragrafo01");
 paragrafo.style.fontSize = "20px";
 paragrafo.style.color = "green";
-paragrafo.style.marginLeft = "100px";
+paragrafo.style.marginLeft = "100px"; */
 
+//Criando elementos pelo js
+let titulo02 = document.createElement("h2");
+titulo02.innerText = "kueizy kueizy kueizy";
+
+let paragrafo = document.getElementById("base");
+paragrafo.append(titulo02);
+paragrafo.prepend(titulo02);
+
+paragrafo.before(titulo02);
+paragrafo.after(titulo02);
+
+titulo02.remove();
+
+//Exemplo lista
+let tarefas = document.getElementById("tarefas");
+
+let item = document.createElement("li");
+item.innerText = "Chegar no horário de aula";
+
+tarefas.append(item);
