@@ -1,86 +1,61 @@
-/* console.log("Funciona!!!!!");
+const removeErro = (evt) => {
+    evt.currentTarget.classList.remove("invalido");
+}
 
-window.console.log("Pelo window");
-console.log(window.location.href);
-console.log(window.navigator.language);
-console.log(window.navigator.platform);
-console.log(window.navigator.userAgent);
+const processarForm = (evt) => {
+    evt.preventDefault();
 
-console.log(window.screen.width);
-console.log(window.screen.height); 
+    const usuario = document.getElementById("usuario");
+    const senha = document.getElementById("senha");
+    const repetesenha = document.getElementById("repetesenha");
+    const cidade = document.getElementById("cidade");
+    const deacordo = document.getElementById("deacordo");
 
-console.log(document);
-console.log(document.head);
-console.log(document.body);
+    if(usuario.value.trim().length === 0){
+        usuario.classList.add("invalido");
+        usuario.focus();
+        return; 
+    }
 
-console.log(document.body.children);
+    if(senha.value.trim().length < 8){
+        senha.classList.add("invalido");
+        senha.focus();
+        return; 
+    }
 
-let titulo = document.body.children[0];
-console.log(titulo);
+    if(repetesenha.value !== senha.value){
+        repetesenha.classList.add("invalido");
+        repetesenha.focus();
+        return; 
+    }
 
-let lista = document.body.children[1];
-console.log(lista);
+    if(!["1", "2", "3"].includes(cidade.value)) {
+        cidade.classList.add("invalido");
+        cidade.focus();
+        return; 
+    }
 
-console.log(lista.firstElementChild);
-console.log(lista.lastElementChild);
-console.log(lista.parentElement);
+    if(!deacordo.checked){
+        deacordo.classList.add("invalido");
+        deacordo.focus();
+        return; 
+    }
 
-console.log(document.getElementById("listinha"));
-console.log(document.getElementById("Item01"));*/
+    const novoUsuario = {
+        usuario: usuario.value.trim(),
+        senha: senha.value,
+        cidade: cidade.value,
+    };
 
-//SEGUNDA PARTE DA AULA
-/* 
+    console.log(novoUsuario);
+};
 
-console.log(document.querySelectorAll(".ordenada"));
-console.log(document.querySelector(".ordenada")); 
+const iniciar = () => {
+    document.forms[0].addEventListener("submit", processarForm);
 
-console.log(document.querySelector(".ordenada").matches(".ordenada"));
+    document
+        .querySelectorAll("input,select")
+        .forEach((campo) => campo.addEventListener("input", removeErro));
+};
 
-let lista = document.querySelector(".ordenada");
-
-console.log(lista.matches("#listinha"));
-
-console.log(document.getElementsByTagName("h1"));
-console.log(document.getElementsByClassName("ordenada"));
-
-let titulo = document.getElementById("titulo");
-titulo.innerText = "<i>Mudei</i>";
-
-let logo = document.getElementsByTagName("img") [0];
-logo.setAttribute("alt", "Logo da ETEAB");
-logo.removeAttribute("alt");
-console.log(logo.getAttribute("alt"));
-
-titulo.classList.add("vermelho");
-titulo.classList.remove("vermelho");
-
-titulo.classList.add("roxo");
-titulo.classList.contains("roxo");
-
-titulo.classList.toggle("negrito");
-
-let paragrafo = document.getElementById("paragrafo01");
-paragrafo.style.fontSize = "20px";
-paragrafo.style.color = "green";
-paragrafo.style.marginLeft = "100px"; */
-
-//Criando elementos pelo js
-let titulo02 = document.createElement("h2");
-titulo02.innerText = "kueizy kueizy kueizy";
-
-let paragrafo = document.getElementById("base");
-paragrafo.append(titulo02);
-paragrafo.prepend(titulo02);
-
-paragrafo.before(titulo02);
-paragrafo.after(titulo02);
-
-titulo02.remove();
-
-//Exemplo lista
-let tarefas = document.getElementById("tarefas");
-
-let item = document.createElement("li");
-item.innerText = "Chegar no horário de aula";
-
-tarefas.append(item);
+document.addEventListener("DOMContentLoaded", iniciar);

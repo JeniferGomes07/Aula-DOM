@@ -3,63 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOM - Parte Completa</title>
-   <style>
-        .regrito{
-            font-weight: bold;
+    <title>Formulario e DOM</title>
+
+    <style>
+        form{
+            display: flex;
+            flex-direction: column;
+            max-width: 280px;
         }
 
-        .vermelho{
+        form > * {
+            padding: 5px;
+        }
+        .invalido{
             color: red;
         }
-
-        .roxo{
-            color: purple;
+        input[type="checkbox"].invalido + label{
+            color: red;
         }
     </style>
+
 </head>
 <body>
-    <h1 id="titulo">Mexendo com DOM</h1>
+    <h1>Formulário simples de Cadastro de Usuário</h1>
+    <form action="cadastro">
+        <label for="usuario">Usuario:</label>
+        <input type="text" id="usuario" name="senha"/>
 
-   <!--  <ul id="listinha">
-        <li id="Item01">Item 1</li>
-        <li id="Item02">Item 2</li>
-        <li id="Item03">Item 3</li>    
-    </ul>
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha"/>
 
-    <ol class = "ordenada">
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li> 
-        <li>Item 4</li>    
-    </ol>
+        <label for="repetesenha">Repetir senha:</label>
+        <input type="password" id="repetesenha" name="repetesenha"/>
 
-    <ul class = "ordenada">
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li> 
-        <li>Item 4</li>    
+        <label for="cidade">Cidade:</label>
+        <select name="cidade" id="cidade">
+            <option selected>-- selecione --</option>
+            <option value="1">Mongaguá</option>
+            <option value="2">Praia Grande</option>
+            <option value="3">Itanhaém</option>
+        </select>
+
+        <div>
+            <input type="checkbox" name="deacordo" id="deacordo"/>
+            <label for="deacordo">Concordo com os termos de uso</label>
+        </div>
+        
+        <button type="submit">Cadastrar</button>
+    </form>
     
-    </ul>
-
-    <p id="paragrafo01">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae delectus voluptatibus, maiores quaerat
-         nobis reprehenderit dolorum minima quas ut nam iusto incidunt excepturi deserunt hic repellendus unde et fuga esse!</p>
-
-    <div id="elem">Elemento piscante</div>
-        <script>
-            setInterval(() => elem.hidden = !elem.hidden, 1000);
-        </script> 
-
-    <img src="LogoAB-final.png" style="height: 150px; object-fit: scale-down;"> -->
-
-    <p id="base">Paragrafo</p>
-
-    <ul id="tarefas">
-        <li>Aprender a digitar mais rápido</li>
-        <li>Falar menos</li>
-        <li>Sair no horário</li>
-    </ul>
-
     <script src="script.js"></script>
 </body>
 </html>
